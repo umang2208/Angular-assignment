@@ -28,14 +28,13 @@ export class CommentDetailsComponent implements OnInit {
   }
   async fetchPost() {
     this.id = this.route.snapshot.params['userID'];
-    this.PostData.comment().subscribe((data) => {
+    console.log(this.id);
+    this.PostData.comment(this.id.toString()).subscribe((data) => {
       this.post = data;
       console.log(this.post.length);
 
-      for(let i= (this.id * 5) -5 ;i< this.id * 5 ;i+=1){
-        this.RequireAlbum.push(this.post[i]);
-      }
-      console.log(this.RequireAlbum);
+      
+      console.log(this.post);
 
       this.loader = false;
     });

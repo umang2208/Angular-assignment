@@ -28,15 +28,11 @@ export class TodoDetailsComponent implements OnInit {
     this.post = await this.fetchPost();
   }
   async fetchPost() {
-    this.PostData.todo().subscribe((data) => {
+    this.PostData.todo(this.id.toString()).subscribe((data) => {
       this.post = data;
-      console.log(this.post);
-      for (let i = 0; i < this.post.length; i += 1) {
-        if (this.post[i].userId === +this.id) {
-          this.RequirePost.push(this.post[i]);
-        }
-      }
-      console.log(this.RequirePost);
+ 
+      this.RequirePost = this.post
+      
       for( let  i=0 ;i< this.RequirePost.length; i+=1){
         if(this.RequirePost[i].completed ){
           this.CompleteTodos.push(this.RequirePost[i]);
@@ -45,7 +41,7 @@ export class TodoDetailsComponent implements OnInit {
           this.NotCompleteTodos.push(this.RequirePost[i]);
         }
       }
-      console.log(this.CompleteTodos);
+     
 
       this.loader = false;
     });

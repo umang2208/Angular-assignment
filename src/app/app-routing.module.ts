@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   { path: 'users', component: UserComponentComponent },
   { path: 'user-details/:userID', component: UserDetailsComponent },
-  { path: 'posts/:userID', component: PostDetailsComponent },
-  { path: 'album/:userID', component: AlbumsComponent },
-  { path: 'todo/:userID', component: TodoDetailsComponent },
-  { path: 'comments/:userID', component: CommentDetailsComponent },
-  { path: 'albumPhotos/:userID', component: AlbumPhotosComponent },
+  { path: 'users/:userID/posts', component: PostDetailsComponent },
+  { path: 'users/:userID/albums', component: AlbumsComponent },
+  { path: 'users/:userID/todos', component: TodoDetailsComponent },
+  { path: 'posts/:userID/comments', component: CommentDetailsComponent },
+  { path: 'users/:userID/albumPhotos/:albumId', component: AlbumPhotosComponent },
 
 ];
 

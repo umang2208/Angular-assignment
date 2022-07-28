@@ -8,6 +8,7 @@ import { APIServicesService } from 'src/app/MyServices/api-services.service';
   styleUrls: ['./album-photos.component.css']
 })
 export class AlbumPhotosComponent implements OnInit {
+  albumId: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,14 +28,15 @@ export class AlbumPhotosComponent implements OnInit {
   }
   async fetchPost() {
     this.id = this.route.snapshot.params['userID'];
-    this.PostData.userImages().subscribe((data) => {
+    this.albumId = this.route.snapshot.params['albumId'];
+
+    console.log(this.id,this.albumId);
+    this.PostData.userImages(this.id.toString(),this.albumId.toString()).subscribe((data) => {
       this.post = data;
       console.log(this.post.length);
 
-      for(let i= (this.id * 50) -50 ;i< this.id * 50 ;i+=1){
-        this.RequireAlbum.push(this.post[i]);
-      }
-      console.log(this.RequireAlbum);
+     
+      console.log(this.post);
       this.loader = false;
 
     });

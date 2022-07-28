@@ -13,7 +13,7 @@
             <hr>
             <div class="heading mb-4"  *ngFor="let post of RequireAlbum"> 
                 <fa-icon  [icon]="facomment" class="fontIcon "></fa-icon>
-                <span class="mx-3 albumcss" (click)="albumPics(post.userId)">
+                <span class="mx-3 albumcss" (click)="albumPics(post.userId , post.id)">
 
                     <strong >{{post.title}}</strong>
                 </span>

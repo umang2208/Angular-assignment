@@ -29,21 +29,18 @@ export class AlbumsComponent implements OnInit {
   }
   async fetchPost() {
     this.id = this.route.snapshot.params['userID'];
-    this.PostData.ablum().subscribe((data) => {
+    this.PostData.ablum(this.id.toString()).subscribe((data) => {
       this.post = data;
       // console.log(this.post.length);
 
-      for (let i = 0; i < this.post.length; i += 1) {
-        if (this.post[i].userId === +this.id) {
-          this.RequireAlbum.push(this.post[i]);
-        }
-      }
+      this.RequireAlbum = this.post;
       console.log(this.RequireAlbum);
       this.loader = false;
     });
     
   }
-  albumPics(userID: number){
-    this.router.navigate([`albumPhotos/${userID}`]);
+  albumPics(userID: number, albumId:number){
+    
+    this.router.navigate([`users/${userID}/albumPhotos/${albumId}`]);
    }
 }

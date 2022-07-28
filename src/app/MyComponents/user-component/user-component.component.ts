@@ -52,13 +52,13 @@ export class UserComponentComponent implements OnInit {
     this.router.navigate([`user-details/${userID}`]);
   }
   PostIcon(userID: number){
-   this.router.navigate([`posts/${userID}`]);
+   this.router.navigate([`users/${userID}/posts`]);
   }
   albumIcon(userID: number){
-    this.router.navigate([`album/${userID}`]);
+    this.router.navigate([`users/${userID}/albums`]);
    }
    todoIcon(userID: number){
-    this.router.navigate([`todo/${userID}`]);
+    this.router.navigate([`users/${userID}/todos`]);
    }
 
 

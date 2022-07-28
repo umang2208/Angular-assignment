@@ -57,19 +57,19 @@ export class APIServicesService {
         )
      
   }
-  post(): Observable<any>{
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+  post(userId:string): Observable<any>{
+    return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
 }
-ablum(): Observable<any>{
-  return this.http.get('https://jsonplaceholder.typicode.com/albums');
+ablum(userId:string): Observable<any>{
+  return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}/albums`);
 }
-todo(): Observable<any>{
-  return this.http.get(`https://jsonplaceholder.typicode.com/todos`);
+todo(userId:string): Observable<any>{
+  return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}/todos`);
 }
-comment(): Observable<any>{
-  return this.http.get('https://jsonplaceholder.typicode.com/comments');
+comment(userId:string): Observable<any>{
+  return this.http.get(`https://jsonplaceholder.typicode.com/posts/${userId}/comments`);
 }
-userImages(): Observable<any>{
-  return this.http.get('https://jsonplaceholder.typicode.com/photos');
+userImages(userId:string,albumId:string): Observable<any>{
+  return this.http.get(`https://jsonplaceholder.typicode.com/albums/${userId}/photos`);
 }
 }

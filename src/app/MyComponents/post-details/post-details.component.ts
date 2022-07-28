@@ -38,14 +38,10 @@ export class PostDetailsComponent implements OnInit {
   }
   async fetchPost() {
     this.id = this.route.snapshot.params['userID'];
-    this.PostData.post().subscribe((data) => {
+    this.PostData.post(this.id.toString()).subscribe((data) => {
       this.post = data;
 
-      for (let i = 0; i < this.post.length; i += 1) {
-        if (this.post[i].userId === +this.id) {
-          this.RequirePost.push(this.post[i]);
-        }
-      }
+      this.RequirePost = this.post;
       console.log(this.RequirePost);
       this.loader = false;
     });
@@ -55,6 +51,6 @@ export class PostDetailsComponent implements OnInit {
     this.router.navigate([`user-details/${userID}`]);
    }
   commentClick(userID: number){
-    this.router.navigate([`comments/${userID}`]);
+    this.router.navigate([`posts/${userID}/comments`]);
    }
 }
