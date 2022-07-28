@@ -1,0 +1,69 @@
+<div class="bodyDiv mx-5">
+
+
+    <div class="text-center">
+         <div class="text-center">
+            <app-loader *ngIf="loader" ></app-loader>
+        </div>
+        <div class="card UserStyle m-3" *ngFor="let user of users" style="width: 18rem;">
+            <img class="card-img-top imgedit mt-1 " style="cursor: pointer;" (click)="ImageClick(user.ele.id)" src={{user.photo}}
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"> <strong>{{user.ele.username}} </strong></h5>
+
+                <p class="card-text"> {{user.ele.name}} </p>
+                <div class="row">
+
+                    <div class="col text-center">
+                        <span class=" icons  " (click)="PostIcon(user.ele.id)">
+
+                            <fa-icon [icon]="faPost" class="fontIcon "></fa-icon>
+                            <span class="postDigit rounded-pill">
+                                {{users.length}}
+                            </span>
+                        </span>
+
+                    </div>
+
+                    <div class="col text-center">
+                        <span class=" icons  " (click)="albumIcon(user.ele.id)">
+
+                            <fa-icon [icon]="facomment" class="fontIcon "></fa-icon>
+                            <span class="postDigit rounded-pill">
+                                {{users.length}}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col text-center">
+                        <span class=" icons  " (click)="todoIcon(user.ele.id)">
+
+                            <fa-icon [icon]="faBar" class="fontIcon "></fa-icon>
+                            <span class="postDigit rounded-pill">
+                                {{users.length}}
+                                <span class="postDigit rounded-pill">
+                                    {{users.length}}
+                                    </span>
+                            </span>
+                            
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- <div class=" icons  ">
+                    <span (click)="PostIcon()">
+
+                    </span>
+                    <fa-icon (click)="commentIcon()" [icon]="facomment" class="fontIcon"></fa-icon>
+                    <fa-icon (click)="todoIcon()" [icon]="faBar" class="fontIconr"></fa-icon>
+                </div> -->
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

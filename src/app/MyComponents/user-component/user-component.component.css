@@ -1,0 +1,39 @@
+.UserStyle {
+    border: 1px solid black;
+   height: 440px;
+    display: inline-block;
+}
+.bodyDiv {
+    background-color: lightgray;}
+.imgedit {
+    width: 16rem;
+    height: 65%;
+    border-radius: 50%;
+}
+.icons {
+    display: inline-block;
+    width: 80%;
+    /* position: relative;
+    direction: ltr; */
+    /* border: 1px solid black; */
+}
+.fontIcon {
+    font-size: 150%;
+}
+
+.icons:hover {
+    background-color: rgb(31, 31, 231);
+    /* font-size: 100%; */
+    border-radius: 50%;;
+    color: white;
+    cursor: pointer;
+}
+.postDigit {
+    position: absolute ;
+    /* left: 60px; */
+   display: inline-block;
+   width: 17px;
+    background-color: red;
+    color: white;
+    font-size: 10px;
+}

@@ -1,0 +1,26 @@
+<div class="bodyDiv  mx-5 py-0">
+    
+    <div class="container">
+         <div class="text-center">
+            <app-loader *ngIf="loader" ></app-loader>
+        </div>
+
+        <app-back-btn></app-back-btn>
+        <div class="row postValue mt-4 mx-0">
+            <h1 >Comments  <span class="deco text-center"> {{RequireAlbum.length}} </span></h1>
+            
+            <hr>
+            <div class="heading mb-4"  *ngFor="let post of RequireAlbum"> 
+                <!-- <fa-icon  [icon]="facomment" class="fontIcon "></fa-icon> -->
+             
+
+                    <h4 class="mx-3">{{post.name}}</h4>
+               
+                <p class="mx-3"> {{post.body}} </p>
+            <hr>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>

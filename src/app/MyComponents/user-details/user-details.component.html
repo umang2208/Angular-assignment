@@ -1,0 +1,77 @@
+<div class="bodyDiv mx-5 py-4">
+    
+<div class="text-center ">
+     <div class="text-center">
+            <app-loader *ngIf="loader" ></app-loader>
+        </div>
+
+    <div class="container">
+       <app-back-btn></app-back-btn>
+    </div>
+    <div class="card  m-auto mt-2 " style="width: 40rem;height: 25rem; border: 1px solid black;">
+        <h5 class="card-title"><strong>{{users[id-1].ele.username}} </strong></h5>
+        <div class="row">
+            <div class="col-4 p-3">
+
+                <img class="card-img-top" style="height: 15rem;" src={{users[id-1].photo}} alt="Card image cap">
+            </div>
+            <div class="col-8 d-flex justify-content-between" >
+                <table class="table">
+                    <tr>
+
+                        <th> Name</th>
+                        <td> {{users[id-1].ele.name}}</td>
+                    </tr>
+                    <tr>
+
+                        <th> company</th>
+                        <td> {{users[id-1].ele.company.name}}</td>
+                    </tr>
+                    <tr>
+                        <th> Website</th>
+                        <td>
+                            <a href="{{users[id-1].ele.website}}">{{users[id-1].ele.website}}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th> Address</th>
+                        <td> `{{users[id-1].ele.address.suite}} {{users[id-1].ele.address.street}} 
+                            {{users[id-1].ele.address.city}}`</td>
+                    </tr>
+                    <tr>
+                        <th> Email</th>
+                        <td>
+                            <a href="{{users[id-1].ele.email}}">{{users[id-1].ele.email}}     
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <th> phone no. :</th>
+                        <td> {{users[id-1].ele.phone}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-4">
+                <button class="btn btn-primary" (click)="goToPost(users[id-1].ele.id)">Posts</button>
+            </div>
+            <div class="col-4">
+                 
+                <button class="btn btn-primary" (click)="goToAlbum(users[id-1].ele.id)">Albums</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary"(click)="goToTodo(users[id-1].ele.id)" >Todo's</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="username"> </div> -->
+
+
+</div>
+</div>

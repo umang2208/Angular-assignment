@@ -1,0 +1,19 @@
+<div class="bodyDiv  mx-5 py-0">
+    
+    <div class="container">
+        <div class="text-center">
+             <div class="text-center">
+            <app-loader *ngIf="loader" ></app-loader>
+        </div>
+        </div>
+
+        <app-back-btn></app-back-btn>
+        <div class="row mb-4">
+            <div class="col">
+                <img *ngFor="let pics of RequireAlbum" class="img-thumbnail "
+                src="{{pics.url}} " alt="">
+            </div>
+        </div>
+    </div>
+    
+</div>
