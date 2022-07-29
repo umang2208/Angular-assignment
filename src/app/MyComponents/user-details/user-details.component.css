@@ -3,3 +3,12 @@
     background-color: lightgray;
     height: 100vh;
 }
+.values{
+    background-color: red;
+    border-radius: 100%;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-top: 3px;
+    
+}

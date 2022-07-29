@@ -14,3 +14,9 @@
     border-radius: 40%;
     font-size: x-large;
 }
+select{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+}
+

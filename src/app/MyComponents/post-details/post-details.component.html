@@ -1,26 +1,46 @@
-
-<div class="bodyDiv  mx-5 py-2">
-    
+<div class="bodyDiv mx-5 py-2">
     <div class="container">
-         <div class="text-center">
-            <app-loader *ngIf="loader" ></app-loader>
+        <div class="text-center">
+            <app-loader *ngIf="loader"></app-loader>
         </div>
 
         <app-back-btn></app-back-btn>
+
+        <div class="row postValue my-3 mx-0 py-2" *ngFor="let post of RequirePost | paginate:{
+        itemsPerPage:+pageSize,
+        currentPage:page,totalItems: count
         
-        <div class="row postValue my-3 mx-0 py-2" *ngFor="let post of RequirePost">
+    }; let i = index
+    ">
             <div class="heading mb-4">
-                <u>{{post.title}}</u>
+                <u>{{ post.title }}</u>
             </div>
-            <p> {{post.body}} </p>
+            <p>{{ post.body }}</p>
             <span>
-            <fa-icon [icon]="author"> </fa-icon> <label for="" class="mx-2"  (click)="userDetail(post.userId  )"> by 
-                <a >{{ user[post.userId -1].ele.username }} </a>
-            </label>|
-            <span>
-                <fa-icon [icon]="cIcon"> </fa-icon> <label for="" class="mx-2" > <a  (click)="commentClick(post.id )">comments</a></label></span>
+                <fa-icon [icon]="author"> </fa-icon>
+                <label for="" class="mx-2" (click)="userDetail(post.userId)">
+                    by
+                    <a>{{ user[post.userId - 1].ele.username }} </a> </label>|
+                <span>
+                    <fa-icon [icon]="cIcon"> </fa-icon>
+                    <label for="" class="mx-2">
+                        <a (click)="commentClick(post.id)">comments</a></label>
+                    <app-comment-details id="comments" class="myClass"></app-comment-details>
+                </span>
             </span>
         </div>
+        <div class="row mt-2 p-2">
+            <div class="col-10 ml-0 p-0">
+                <pagination-controls previousLabel="prev" nextLabel="NEXT" (pageChange)="onPageChange($event)">
+                </pagination-controls>
+            </div>
+            <div class="col-2">
+                <select (change)="onPageSizeChange($event)">
+                    <option *ngFor="let size of pageSizes">
+                        {{ size }}
+                    </option>
+                </select>
+            </div>
+        </div>
     </div>
-    
 </div>

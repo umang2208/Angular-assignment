@@ -5,10 +5,9 @@ import { APIServicesService } from 'src/app/MyServices/api-services.service';
 @Component({
   selector: 'app-todo-details',
   templateUrl: './todo-details.component.html',
-  styleUrls: ['./todo-details.component.css']
+  styleUrls: ['./todo-details.component.css'],
 })
 export class TodoDetailsComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private PostData: APIServicesService
@@ -16,9 +15,9 @@ export class TodoDetailsComponent implements OnInit {
   post!: any;
   id: number = 0;
   RequirePost: any[] = [];
-  CompleteTodos: any[]= [];
-  NotCompleteTodos : any[] = [];
-  loader : boolean = false;
+  CompleteTodos: any[] = [];
+  NotCompleteTodos: any[] = [];
+  loader: boolean = false;
 
   j: number = 0;
   async ngOnInit(): Promise<void> {
@@ -30,21 +29,19 @@ export class TodoDetailsComponent implements OnInit {
   async fetchPost() {
     this.PostData.todo(this.id.toString()).subscribe((data) => {
       this.post = data;
- 
-      this.RequirePost = this.post
-      
-      for( let  i=0 ;i< this.RequirePost.length; i+=1){
-        if(this.RequirePost[i].completed ){
+
+      this.RequirePost = this.post;
+
+      for (let i = 0; i < this.RequirePost.length; i += 1) {
+        if (this.RequirePost[i].completed) {
           this.CompleteTodos.push(this.RequirePost[i]);
-        }
-        else{
+        } else {
           this.NotCompleteTodos.push(this.RequirePost[i]);
         }
       }
-     
 
       this.loader = false;
     });
   }
-
+ 
 }

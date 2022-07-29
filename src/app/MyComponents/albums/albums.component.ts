@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faFaceLaughBeam } from '@fortawesome/free-solid-svg-icons';
 import { APIServicesService } from 'src/app/MyServices/api-services.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.css']
+  styleUrls: ['./albums.component.css'],
 })
 export class AlbumsComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private PostData: APIServicesService,
@@ -18,9 +18,8 @@ export class AlbumsComponent implements OnInit {
   post!: any;
   id: number = 0;
   RequireAlbum: any[] = [];
- facomment = faFaceLaughBeam;
- loader : boolean = false;
-
+  facomment = faFaceLaughBeam;
+  loader: boolean = false;
 
   j: number = 0;
   async ngOnInit(): Promise<void> {
@@ -37,10 +36,21 @@ export class AlbumsComponent implements OnInit {
       console.log(this.RequireAlbum);
       this.loader = false;
     });
-    
   }
-  albumPics(userID: number, albumId:number){
-    
+  pageSize = 5;
+  pageSizes = [5, 10, 20];
+  count: number = 0;
+  page: number = 1;
+  onPageChange(event: any) {
+    this.page = event;
+    this.post();
+  }
+  onPageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.post();
+  }
+  albumPics(userID: number, albumId: number) {
     this.router.navigate([`users/${userID}/albumPhotos/${albumId}`]);
-   }
+  }
 }

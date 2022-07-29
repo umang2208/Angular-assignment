@@ -2,9 +2,9 @@
 
 
     <div class="text-center">
-         <div class="text-center">
+         <!-- <div class="text-center"> -->
             <app-loader *ngIf="loader" ></app-loader>
-        </div>
+        <!-- </div> -->
         <div class="card UserStyle m-3" *ngFor="let user of users" style="width: 18rem;">
             <img class="card-img-top imgedit mt-1 " style="cursor: pointer;" (click)="ImageClick(user.ele.id)" src={{user.photo}}
                 alt="Card image cap">
@@ -49,18 +49,6 @@
                     </div>
 
                 </div>
-
-
-                <!-- <div class=" icons  ">
-                    <span (click)="PostIcon()">
-
-                    </span>
-                    <fa-icon (click)="commentIcon()" [icon]="facomment" class="fontIcon"></fa-icon>
-                    <fa-icon (click)="todoIcon()" [icon]="faBar" class="fontIconr"></fa-icon>
-                </div> -->
-
-
-
 
             </div>
         </div>

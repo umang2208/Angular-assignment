@@ -39,7 +39,7 @@ export class APIServicesService {
       return this.http.get<[]>('https://jsonplaceholder.typicode.com/users')
       .pipe(map((response) => {
         console.log("inside services");
-        console.log(response);
+        // console.log(response);
         let arr: any = [];
         response.forEach((ele,index)=>{
           arr.push({ele,photo:this.images[index]});
@@ -50,8 +50,8 @@ export class APIServicesService {
         //   arr.push(customArr);
           
         // }
-        console.log("hello");
-        console.log(arr);
+        // console.log("hello");
+        // console.log(arr);
         return arr;
       })
         )

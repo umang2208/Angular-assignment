@@ -50,7 +50,31 @@ export class PostDetailsComponent implements OnInit {
   userDetail(userID: number){
     this.router.navigate([`user-details/${userID}`]);
    }
+   class:boolean = false;
+
   commentClick(userID: number){
     this.router.navigate([`posts/${userID}/comments`]);
+    // if(!this.class){
+    //   document.getElementById('comments')?.classList.remove('myClass');
+    //   this.class = true;
+    // }
+    //   else{
+    //     this.class = false;
+      
+    //   document.getElementById('comments')?.classList.add('myClass');
+    // }
+   }
+   pageSize = 5;
+   pageSizes = [ 5,10,20];
+   count: number =0;
+   page : number = 1;
+   onPageChange(event:any){
+     this.page = event;
+     this.post();
+   }
+   onPageSizeChange(event:any):void{
+     this.pageSize = event.target.value;
+     this.page = 1;
+     this.post();
    }
 }
