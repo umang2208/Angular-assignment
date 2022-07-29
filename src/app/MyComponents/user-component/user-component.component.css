@@ -37,3 +37,12 @@
     color: white;
     font-size: 10px;
 }
+.postDigit1 {
+    position: absolute ;
+    /* left: 60px; */
+   display: inline-block;
+   width: 17px;
+    background-color: blue;
+    color: white;
+    font-size: 10px;
+}

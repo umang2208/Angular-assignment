@@ -31,22 +31,75 @@ export class UserComponentComponent implements OnInit {
  faBar = faBarChart;
   
   ngOnInit(): void {
-    this.loader = true;
-    // setTimeout(() => {
-      // console.log("timeOut");
-      this.userData.users().subscribe((data)=>{
-        this.users = data;
-      console.log("inside user-component");
-      this.loader = false;
-      //  console.log(this.users);
-      //  console.log("first");
-      //  for(let i = 0 ;i< this.users.length;i+=1)
-      //  this.todo = this.fetchPost(+this.users[i].id);
-      });
-    // }, 2000);
-   
-
+    this.userCompleteDetails();
   }
+
+    userCompleteDetails(){
+
+      this.loader = true;
+      this.userData.users().subscribe(async (data)=>{
+        this.users = data;
+        for( let i = 0;i< this.users.length;i+=1){
+          const singleUser = this.users[i];
+// console.log(singleUser);
+          const arr  = await Promise.all([
+            this.usersPost(singleUser.ele.id),
+            this.usersAlbum(singleUser.ele.id),
+            this.usersTodo(singleUser.ele.id),
+          ]);
+          console.log("first-line");
+          console.log(arr);
+          this.users[i]["postCount"]= arr[0];
+          this.users[i]["AlbumCount"]= arr[1];
+          this.users[i]["completeTodoount"]= arr[2];
+          // this.users[i]["incompleteTodoount"]= arr[2].incomplete;
+        }
+        
+        
+        this.loader = false;
+      // console.log("inside user-component");
+      
+      // console.log(this.users);
+      });
+    }
+    usersPost(userId: number){
+      console.log("second-line");
+
+    return new Promise((resolve, reject)=>{
+
+      this.userData.post(userId.toString()).subscribe((data)=>{
+        console.log(data.length);
+        resolve(data.length);
+      });
+     });
+    }
+    usersAlbum(userId: number){
+      return new Promise((resolve,reject)=>{
+        this.userData.ablum(userId.toString()).subscribe((data)=>{
+          resolve(data.length);
+        })
+
+      });
+    }
+    usersTodo(userId: number){
+      return new Promise((resolve,rejcet)=>{
+
+        this.userData.todo(userId.toString()).subscribe((data)=>{
+          let complete = 0, incomplete =0;
+          for(let i = 0 ;i<data.length;i+=1){
+            // console.log(data);
+            if(data[i].completed){
+              complete+=1;
+            }
+            else{
+              incomplete+=1;
+            }
+          }
+          // console.log(complete,incomplete);
+          resolve ({complete,incomplete});
+        })
+      });
+    }
   ImageClick(userID: number){
     // console.log(userID + "calliing...");
     this.router.navigate([`user-details/${userID}`]);

@@ -19,7 +19,7 @@
 
                             <fa-icon [icon]="faPost" class="fontIcon "></fa-icon>
                             <span class="postDigit rounded-pill">
-                                {{users.length}}
+                                {{user.postCount}}
                             </span>
                         </span>
 
@@ -30,7 +30,7 @@
 
                             <fa-icon [icon]="facomment" class="fontIcon "></fa-icon>
                             <span class="postDigit rounded-pill">
-                                {{users.length}}
+                                {{user.AlbumCount}}
                             </span>
                         </span>
                     </div>
@@ -39,9 +39,9 @@
 
                             <fa-icon [icon]="faBar" class="fontIcon "></fa-icon>
                             <span class="postDigit rounded-pill">
-                                {{users.length}}
-                                <span class="postDigit rounded-pill">
-                                    {{users.length}}
+                                {{user.completeTodoount.incomplete}}
+                                <span class="postDigit1 rounded-pill">
+                                    {{user.completeTodoount.complete}}
                                     </span>
                             </span>
                             
