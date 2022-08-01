@@ -67,6 +67,7 @@ todo(userId:string): Observable<any>{
   return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}/todos`);
 }
 comment(userId:string): Observable<any>{
+  console.log("service" , userId);
   return this.http.get(`https://jsonplaceholder.typicode.com/posts/${userId}/comments`);
 }
 userImages(userId:string,albumId:string): Observable<any>{

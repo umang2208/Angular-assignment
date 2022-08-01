@@ -24,12 +24,12 @@ export class UserDetailsComponent implements OnInit {
   loader: boolean = false;
   id: number = 0;
 
-
-
   ngOnInit(): void {
     this.userCompleteDetails();
   }
-
+/*************************************
+   * -> fetching complete user details
+   * *********************************** */
   userCompleteDetails() {
     this.loader = true;
     this.id = this.route.snapshot.params['userID'];
@@ -52,7 +52,7 @@ export class UserDetailsComponent implements OnInit {
           this.users[i]['completeTodoount'] = arr[2];
           // this.users[i]["incompleteTodoount"]= arr[2].incomplete;
         }
-        console.log(this.users);
+        // console.log(this.users);
         //console.log("calling me second");
         this.loader = false;
       } catch (error: any) {
@@ -63,7 +63,6 @@ export class UserDetailsComponent implements OnInit {
   }
   usersPost(userId: number) {
     //console.log("second-line");
-
     return new Promise((resolve, reject) => {
       this.userData.post(userId.toString()).subscribe(
         (data: any) => {
@@ -107,17 +106,16 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-
-
-
-  goToPost(userID: number){
-    
+  /*************************************
+   * ->  Routes
+   * *********************************** */
+  goToPost(userID: number) {
     this.router.navigate([`users/${userID}/posts`]);
-   }
-   goToAlbum(userID: number){
+  }
+  goToAlbum(userID: number) {
     this.router.navigate([`users/${userID}/albums`]);
-   }
-   goToTodo(userID: number){
+  }
+  goToTodo(userID: number) {
     this.router.navigate([`users/${userID}/todos`]);
-   }
+  }
 }

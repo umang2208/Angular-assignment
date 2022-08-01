@@ -8,6 +8,10 @@ import { APIServicesService } from 'src/app/MyServices/api-services.service';
   templateUrl: './comment-details.component.html',
   styleUrls: ['./comment-details.component.css']
 })
+
+/*************************************
+   * -> not used
+   * *********************************** */
 export class CommentDetailsComponent implements OnInit {
 
   constructor(

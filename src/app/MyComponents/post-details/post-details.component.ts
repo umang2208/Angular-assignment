@@ -41,7 +41,7 @@ export class PostDetailsComponent implements OnInit {
       this.RequirePost = this.post;
       for(let i= 0;i<this.RequirePost.length;i+=1){
         const signlePost = this.RequirePost[i];
-      
+      console.log("single", signlePost.id);
         const arr = await Promise.all([
           this.postComm(signlePost.id)
         ]);
@@ -63,9 +63,6 @@ export class PostDetailsComponent implements OnInit {
         (data: any) => {
         
           resolve(data);
-        },
-        (error) => {
-          reject(error);
         }
       );
     });
@@ -76,14 +73,15 @@ export class PostDetailsComponent implements OnInit {
   userDetail(userID: number){
     this.router.navigate([`user-details/${userID}`]);
    }
-  
+   isShow : boolean = false;
   commentClick(userID: number){
     // alert(this.RequirePost[userID].showComment);
     // alert(userID);
-    // console.log(userID);
-    // console.log(this.RequirePost[userID-1]);
+    // console.log(userID," hy");
+    let customizeUserId =( userID % 10) == 0? 9 : (userID % 10 )-1;
+    console.log(this.RequirePost[customizeUserId]);
     // this.isShow = !this.isShow;
-    this.RequirePost[userID-1].showComment = ! this.RequirePost[userID-1].showComment;
+    this.RequirePost[customizeUserId].showComment = ! this.RequirePost[customizeUserId].showComment;
   
    }
    pageSize = 5;

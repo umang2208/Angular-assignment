@@ -29,9 +29,7 @@ export class TodoDetailsComponent implements OnInit {
   async fetchPost() {
     this.PostData.todo(this.id.toString()).subscribe((data) => {
       this.post = data;
-
       this.RequirePost = this.post;
-
       for (let i = 0; i < this.RequirePost.length; i += 1) {
         if (this.RequirePost[i].completed) {
           this.CompleteTodos.push(this.RequirePost[i]);

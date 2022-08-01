@@ -32,30 +32,30 @@ export class UserComponentComponent implements OnInit {
   ngOnInit(): void {
     this.userCompleteDetails();
   }
-
+  /*************************************
+   * -> fetching complete user details
+   * *********************************** */
   userCompleteDetails() {
     this.loader = true;
     this.userData.users().subscribe(async (data) => {
-     
       try {
         this.users = data;
         for (let i = 0; i < this.users.length; i += 1) {
           const singleUser = this.users[i];
+          // calling diff. apis for getting all type of data
           const arr = await Promise.all([
             this.usersPost(singleUser.ele.id),
             this.usersAlbum(singleUser.ele.id),
             this.usersTodo(singleUser.ele.id),
           ]);
-      
-        
+
           this.users[i]['postCount'] = arr[0];
           this.users[i]['AlbumCount'] = arr[1];
           this.users[i]['completeTodoount'] = arr[2];
-         
+
           // this.users[i]["incompleteTodoount"]= arr[2].incomplete;
         }
-      
-      
+
         this.loader = false;
       } catch (error: any) {
         this.loader = false;
@@ -64,12 +64,9 @@ export class UserComponentComponent implements OnInit {
     });
   }
   usersPost(userId: number) {
-   
-
     return new Promise((resolve, reject) => {
       this.userData.post(userId.toString()).subscribe(
         (data: any) => {
-        
           resolve(data.length);
         },
         (error) => {
@@ -108,6 +105,10 @@ export class UserComponentComponent implements OnInit {
       });
     });
   }
+
+  /*************************************
+   * -> Routes for different pages
+   * *********************************** */
   ImageClick(userID: number) {
     // e(userID + "calliing...");
     this.router.navigate([`user-details/${userID}`]);
