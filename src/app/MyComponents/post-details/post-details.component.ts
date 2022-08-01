@@ -26,43 +26,65 @@ export class PostDetailsComponent implements OnInit {
   cIcon = faCommenting;
   j: number = 0;
   loader : boolean = false;
-  async ngOnInit(): Promise<void> {
+   ngOnInit() {
     this.loader = true;
     this.PostData.users().subscribe((data)=>{
       this.user = data;
-    console.log("inside user-component");
-     console.log(this.user);
-    
     });
-    this.post = await this.fetchPost();
+    this.post =  this.fetchPost();
   }
-  async fetchPost() {
+   fetchPost() {
     this.id = this.route.snapshot.params['userID'];
-    this.PostData.post(this.id.toString()).subscribe((data) => {
+    this.PostData.post(this.id.toString()).subscribe(async(data) => {
       this.post = data;
 
       this.RequirePost = this.post;
-      console.log(this.RequirePost);
+      for(let i= 0;i<this.RequirePost.length;i+=1){
+        const signlePost = this.RequirePost[i];
+      
+        const arr = await Promise.all([
+          this.postComm(signlePost.id)
+        ]);
+        console.log("calling second");
+        console.log(arr);
+        this.RequirePost[i]['comment'] = arr;
+        this.RequirePost[i]['showComment'] = false;
+      }
+      console.log( "require", this.RequirePost);
+      
       this.loader = false;
     });
 
   }
+
+   postComm(commId:number){
+    return new Promise((resolve, reject) => {
+      this.PostData.comment(commId.toString()).subscribe(
+        (data: any) => {
+        
+          resolve(data);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+   
+  }
+  
+
   userDetail(userID: number){
     this.router.navigate([`user-details/${userID}`]);
    }
-   class:boolean = false;
-
+  
   commentClick(userID: number){
-    this.router.navigate([`posts/${userID}/comments`]);
-    // if(!this.class){
-    //   document.getElementById('comments')?.classList.remove('myClass');
-    //   this.class = true;
-    // }
-    //   else{
-    //     this.class = false;
-      
-    //   document.getElementById('comments')?.classList.add('myClass');
-    // }
+    // alert(this.RequirePost[userID].showComment);
+    // alert(userID);
+    // console.log(userID);
+    // console.log(this.RequirePost[userID-1]);
+    // this.isShow = !this.isShow;
+    this.RequirePost[userID-1].showComment = ! this.RequirePost[userID-1].showComment;
+  
    }
    pageSize = 5;
    pageSizes = [ 5,10,20];

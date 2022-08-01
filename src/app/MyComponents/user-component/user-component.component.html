@@ -38,10 +38,10 @@
                         <span class=" icons  " (click)="todoIcon(user.ele.id)">
 
                             <fa-icon [icon]="faBar" class="fontIcon "></fa-icon>
-                            <span class="postDigit rounded-pill">
-                                {{user.completeTodoount.incomplete}}
-                                <span class="postDigit1 rounded-pill">
-                                    {{user.completeTodoount.complete}}
+                            <span  class="postDigit rounded-pill">
+                                {{ user.completeTodoount?.incomplete || 4 }}
+                                <span class="postDigit1 rounded-pill" style="background-color: blue;">
+                                    {{user.completeTodoount?.complete}}
                                     </span>
                             </span>
                             

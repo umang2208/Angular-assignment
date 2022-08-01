@@ -75,10 +75,10 @@
             <div class="col-4">
                 <button class="btn btn-primary"(click)="goToTodo(users[id-1].ele.id)" >Todo's
                     <div class="values text-center">
-                     <sup class="text-center"> {{users[id-1].completeTodoount.complete}} </sup>
+                     <sup class="text-center"> {{users[id-1].completeTodoount?.incomplete}} </sup>
                     </div>
-                    <div class="values text-center">
-                    <sup> {{users[id-1].completeTodoount.incomplete}} </sup>
+                    <div class="values text-center" style="background-color: blue;">
+                    <sup> {{users[id-1].completeTodoount?.complete}} </sup>
 
                     </div>
                 </button>

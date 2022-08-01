@@ -20,12 +20,27 @@
                 <fa-icon [icon]="author"> </fa-icon>
                 <label for="" class="mx-2" (click)="userDetail(post.userId)">
                     by
-                    <a>{{ user[post.userId - 1].ele.username }} </a> </label>|
+                    <a>{{ user[post.userId - 1].ele?.username }} </a> </label>|
                 <span>
                     <fa-icon [icon]="cIcon"> </fa-icon>
                     <label for="" class="mx-2">
+
                         <a (click)="commentClick(post.id)">comments</a></label>
-                    <app-comment-details id="comments" class="myClass"></app-comment-details>
+                        
+                        <div class="showClass" *ngIf="post.showComment  ">
+                        <div class="commentSection mb-4 mt-3 "  *ngFor="let comment of post.comment[0] "> 
+                            <!-- <fa-icon  [icon]="facomment" class="fontIcon "></fa-icon> -->
+                                
+                               
+                                <h4 class="mx-3">{{comment.name}}</h4>
+                                
+                                <p class="mx-3">
+                                     {{comment.body}} </p>
+                                <hr>
+                                
+                            </div>
+                        </div>
+                    <!-- <app-comment-details id="comments" class="myClass"></app-comment-details> -->
                 </span>
             </span>
         </div>

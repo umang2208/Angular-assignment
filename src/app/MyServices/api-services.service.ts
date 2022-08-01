@@ -38,8 +38,8 @@ export class APIServicesService {
   users(): Observable<any>{
       return this.http.get<[]>('https://jsonplaceholder.typicode.com/users')
       .pipe(map((response) => {
-        console.log("inside services");
-        // console.log(response);
+        //console("inside services");
+        // //console(response);
         let arr: any = [];
         response.forEach((ele,index)=>{
           arr.push({ele,photo:this.images[index]});
@@ -50,8 +50,8 @@ export class APIServicesService {
         //   arr.push(customArr);
           
         // }
-        // console.log("hello");
-        // console.log(arr);
+        // //console("hello");
+        // //console(arr);
         return arr;
       })
         )
