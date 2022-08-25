@@ -58,7 +58,7 @@
         </div>
         <div class="row mt-3">
             <div class="col-4">
-                <button class="btn btn-primary" (click)="goToPost(users[id-1].ele.id)">Posts 
+                <button class="btn btn-primary" (click)="goToPage(users[id-1].ele.id,'posts')">Posts 
                     <div class="values text-center">
                     <sup> {{users[id-1].postCount}}</sup>
                     </div>
@@ -66,14 +66,14 @@
             </div>
             <div class="col-4">
                  
-                <button class="btn btn-primary" (click)="goToAlbum(users[id-1].ele.id)">Albums
+                <button class="btn btn-primary" (click)="goToPage(users[id-1].ele.id,'albums')">Albums
                     <div  class="values text-center">
                         <sup > {{users[id-1].AlbumCount}}</sup> 
                     </div>
                 </button>
             </div>
             <div class="col-4">
-                <button class="btn btn-primary"(click)="goToTodo(users[id-1].ele.id)" >Todo's
+                <button class="btn btn-primary"(click)="goToPage(users[id-1].ele.id,'todos')" >Todo's
                     <div class="values text-center">
                      <sup class="text-center"> {{users[id-1].completeTodoount?.incomplete}} </sup>
                     </div>

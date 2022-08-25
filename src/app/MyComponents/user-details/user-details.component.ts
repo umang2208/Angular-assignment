@@ -109,13 +109,7 @@ export class UserDetailsComponent implements OnInit {
   /*************************************
    * ->  Routes
    * *********************************** */
-  goToPost(userID: number) {
-    this.router.navigate([`users/${userID}/posts`]);
-  }
-  goToAlbum(userID: number) {
-    this.router.navigate([`users/${userID}/albums`]);
-  }
-  goToTodo(userID: number) {
-    this.router.navigate([`users/${userID}/todos`]);
+   goToPage(userID: number,value:string) {
+    this.router.navigate([`users/${userID}/${value}`]);
   }
 }

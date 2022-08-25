@@ -113,13 +113,7 @@ export class UserComponentComponent implements OnInit {
     // e(userID + "calliing...");
     this.router.navigate([`user-details/${userID}`]);
   }
-  PostIcon(userID: number) {
-    this.router.navigate([`users/${userID}/posts`]);
-  }
-  albumIcon(userID: number) {
-    this.router.navigate([`users/${userID}/albums`]);
-  }
-  todoIcon(userID: number) {
-    this.router.navigate([`users/${userID}/todos`]);
+  GoToPage(userID: number, value:string) {
+    this.router.navigate([`users/${userID}/${value}`]);
   }
 }

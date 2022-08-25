@@ -2,7 +2,9 @@
     border: 1px solid black;
    height: 440px;
     display: inline-block;
+    direction: ltr;
 }
+
 .bodyDiv {
     background-color: lightgray;}
 .imgedit {
